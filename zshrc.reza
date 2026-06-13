@@ -1,0 +1,23 @@
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# PATH
+export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"
+
+# kubectl
+source <(kubectl completion zsh)
+compdef k=kubectl
+alias k=kubectl
+export KUBECONFIG=~/.kube/config
+
+# oh-my-posh
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/dracula-custom.omp.json)"
+
+# git hooks
+# (set via git config --global core.hooksPath ~/git-hooks/.githooks)
