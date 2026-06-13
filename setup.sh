@@ -141,7 +141,7 @@ mkdir -p /root/.config/oh-my-posh
 mkdir -p /home/reza/.config/oh-my-posh
 
 for THEME in dracula-linux.omp.json dracula-windows.omp.json dracula-wsl.omp.json dracula-mac.omp.json; do
-  curl -sL "$DOTFILES_RAW/omp/$THEME" -o "/root/.config/oh-my-posh/$THEME"
+  curl -sL "$DOTFILES_RAW/$THEME" -o "/root/.config/oh-my-posh/$THEME"
   cp "/root/.config/oh-my-posh/$THEME" "/home/reza/.config/oh-my-posh/$THEME"
 done
 
@@ -161,7 +161,7 @@ ZSH_CUSTOM_ROOT=/root/.oh-my-zsh/custom/plugins
 [ ! -d "$ZSH_CUSTOM_ROOT/zsh-syntax-highlighting" ] && \
   git clone -q https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM_ROOT/zsh-syntax-highlighting"
 
-curl -sL "$DOTFILES_RAW/zsh/zshrc.root" -o /root/.zshrc
+curl -sL "$DOTFILES_RAW/zshrc.root" -o /root/.zshrc
 sed -i "s/dracula-linux.omp.json/$OMP_THEME/" /root/.zshrc
 chsh -s /usr/bin/zsh root
 success "zsh configured for root (theme: $OMP_THEME)"
@@ -181,7 +181,7 @@ ZSH_CUSTOM_REZA=$REZA_HOME/.oh-my-zsh/custom/plugins
 [ ! -d "$ZSH_CUSTOM_REZA/zsh-syntax-highlighting" ] && \
   su - reza -c "git clone -q https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM_REZA/zsh-syntax-highlighting"
 
-curl -sL "$DOTFILES_RAW/zsh/zshrc.reza" -o "$REZA_HOME/.zshrc"
+curl -sL "$DOTFILES_RAW/zshrc.reza" -o "$REZA_HOME/.zshrc"
 sed -i "s/dracula-linux.omp.json/$OMP_THEME/" "$REZA_HOME/.zshrc"
 chown reza:reza "$REZA_HOME/.zshrc"
 success "zsh configured for reza (theme: $OMP_THEME)"
