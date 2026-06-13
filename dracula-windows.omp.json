@@ -9,7 +9,7 @@
           "foreground": "#f8f8f2",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "template": "🐧 ",
+          "template": " 🪟 ",
           "type": "text"
         },
         {
@@ -24,9 +24,7 @@
           "background": "#bd93f9",
           "foreground": "#f8f8f2",
           "powerline_symbol": "\ue0b0",
-          "options": {
-            "style": "folder"
-          },
+          "options": { "style": "folder" },
           "style": "powerline",
           "template": " {{ .Path }} ",
           "type": "path"
@@ -43,19 +41,16 @@
             "ignore_submodules": true
           },
           "style": "powerline",
-          "template": " 🌿 {{ .HEAD }}{{ if .Working.Changed }} !{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} +{{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} stash:{{ .StashCount }}{{ end }}{{ if gt .Behind 0 }} <#8be9fd>⇣{{ .Behind }}</>{{ end }}{{ if gt .Ahead 0 }} <#50fa7b>⇡{{ .Ahead }}</>{{ end }} ",
+          "template": " \ud83c\udf3f {{ .HEAD }}{{ if .Working.Changed }} !{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} +{{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} stash:{{ .StashCount }}{{ end }}{{ if gt .Behind 0 }} \u2193{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} \u2191{{ .Ahead }}{{ end }} ",
           "type": "git"
         },
         {
           "background": "#8be9fd",
           "foreground": "#282a36",
           "powerline_symbol": "\ue0b0",
-          "options": {
-            "fetch_context": true,
-            "fetch_namespace": true
-          },
+          "options": { "fetch_context": true, "fetch_namespace": true },
           "style": "powerline",
-          "template": " ☸️  {{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} ",
+          "template": " \u2638\ufe0f  {{ .Context }}{{ if .Namespace }}:{{ .Namespace }}{{ end }} ",
           "type": "kubectl"
         },
         {
@@ -63,32 +58,22 @@
           "foreground": "#282a36",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " 🐳 {{ .Output }} ",
+          "template": " \ud83d\udc33 {{ .Output }} ",
           "type": "docker",
-          "options": {
-            "display_mode": "always"
-          }
-        }
-      ],
-      "type": "prompt"
-    },
-    {
-      "alignment": "right",
-      "segments": [
+          "options": { "display_mode": "always" }
+        },
         {
           "background": "#ff79c6",
           "foreground": "#f8f8f2",
-          "leading_diamond": "\ue0b2",
+          "powerline_symbol": "\ue0b0",
+          "trailing_diamond": "\ue0b0",
           "style": "diamond",
-          "template": " {{ .CurrentDate | date .Format }} 🕑 ",
-          "trailing_diamond": "\ue0b4",
+          "template": " {{ .CurrentDate | date .Format }} \ud83d\udd51 ",
           "type": "time",
-          "options": {
-            "time_format": "3:04 PM"
-          }
+          "options": { "time_format": "3:04 PM" }
         }
       ],
-      "type": "rprompt"
+      "type": "prompt"
     }
   ],
   "final_space": true,
