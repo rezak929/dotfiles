@@ -140,12 +140,12 @@ success "gitleaks $(gitleaks version) installed"
 # ── Step 5: Download OMP themes ──────────────────────────────────────────────
 header "5. Downloading OMP themes"
 
-mkdir -p /root/.config/oh-my-posh
-mkdir -p /home/reza/.config/oh-my-posh
+mkdir -p /root/.config/k8s/zsh-profile
+mkdir -p /home/reza/.config/k8s/zsh-profile
 
 for THEME in dracula-linux.omp.json dracula-windows.omp.json dracula-wsl.omp.json dracula-mac.omp.json; do
-  curl -sL "$DOTFILES_RAW/$THEME" -o "/root/.config/oh-my-posh/$THEME"
-  cp "/root/.config/oh-my-posh/$THEME" "/home/reza/.config/oh-my-posh/$THEME"
+  curl -sL "$DOTFILES_RAW/$THEME" -o "/root/.config/k8s/zsh-profile/$THEME"
+  cp "/root/.config/k8s/zsh-profile/$THEME" "/home/reza/.config/k8s/zsh-profile/$THEME"
 done
 
 chown -R reza:reza /home/reza/.config
@@ -165,7 +165,7 @@ ZSH_CUSTOM_ROOT=/root/.oh-my-zsh/custom/plugins
   git clone -q https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM_ROOT/zsh-syntax-highlighting"
 
 curl -sL "$DOTFILES_RAW/zshrc.root" -o /root/.zshrc
-sed -i "s/dracula-linux.omp.json/$OMP_THEME/" /root/.zshrc
+sed -i "s|~/.config/oh-my-posh/dracula-linux.omp.json|~/.config/k8s/zsh-profile/$OMP_THEME|" /root/.zshrc
 chsh -s /usr/bin/zsh root
 success "zsh configured for root (theme: $OMP_THEME)"
 
@@ -185,7 +185,7 @@ ZSH_CUSTOM_REZA=$REZA_HOME/.oh-my-zsh/custom/plugins
   su - reza -c "git clone -q https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM_REZA/zsh-syntax-highlighting"
 
 curl -sL "$DOTFILES_RAW/zshrc.reza" -o "$REZA_HOME/.zshrc"
-sed -i "s/dracula-linux.omp.json/$OMP_THEME/" "$REZA_HOME/.zshrc"
+sed -i "s|~/.config/oh-my-posh/dracula-linux.omp.json|~/.config/k8s/zsh-profile/$OMP_THEME|" "$REZA_HOME/.zshrc"
 chown reza:reza "$REZA_HOME/.zshrc"
 success "zsh configured for reza (theme: $OMP_THEME)"
 
