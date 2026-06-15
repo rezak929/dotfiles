@@ -82,7 +82,10 @@ apt-get install -y -q \
   ca-certificates gnupg gpg
 
 # Modern CLI tools
-apt-get install -y -q fzf bat zoxide 2>/dev/null || true
+apt-get install -y -q fzf bat zoxide btop tealdeer 2>/dev/null || true
+
+# Update tldr cache
+tldr --update 2>/dev/null || true
 
 # eza — try apt first, fall back to GitHub release
 if ! apt-get install -y -q eza 2>/dev/null; then
@@ -296,7 +299,7 @@ echo -e "  ${GREEN}✓${NC} Users:         root, reza (passwordless sudo)"
 echo -e "  ${GREEN}✓${NC} Shell:         zsh + oh-my-zsh + Dracula theme"
 echo -e "  ${GREEN}✓${NC} oh-my-posh:    $(oh-my-posh --version)"
 echo -e "  ${GREEN}✓${NC} gitleaks:      $(gitleaks version)"
-echo -e "  ${GREEN}✓${NC} CLI tools:     eza, bat, fzf, zoxide"
+echo -e "  ${GREEN}✓${NC} CLI tools:     eza, bat, fzf, zoxide, btop, tldr"
 echo -e "  ${GREEN}✓${NC} git hooks:     ~/git-hooks/.githooks"
 echo -e "  ${GREEN}✓${NC} SSH keys:      distributed to all known nodes"
 echo ""
