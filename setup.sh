@@ -152,7 +152,7 @@ chown -R reza:reza /home/reza/.config
 success "OMP themes downloaded (platform: $OMP_THEME)"
 
 # ── Step 6: oh-my-zsh + plugins for root ─────────────────────────────────────
-header "6. Setting up zsh for root"
+header "6. Setting up zsh for root (1/2)"
 
 if [ ! -d /root/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -170,7 +170,7 @@ chsh -s /usr/bin/zsh root
 success "zsh configured for root (theme: $OMP_THEME)"
 
 # ── Step 7: oh-my-zsh + plugins for reza ─────────────────────────────────────
-header "7. Setting up zsh for reza"
+header "7. Setting up zsh for reza (2/2)"
 
 REZA_HOME=/home/reza
 
@@ -190,9 +190,10 @@ chown reza:reza "$REZA_HOME/.zshrc"
 success "zsh configured for reza (theme: $OMP_THEME)"
 
 # ── Step 8: git config ───────────────────────────────────────────────────────
-header "8. Configuring git"
+header "8. Configuring git (root + reza)"
 
 for TARGET_USER in root reza; do
+  info "Configuring git for ${BOLD}$TARGET_USER${NC}..."
   su - "$TARGET_USER" -c "
     git config --global user.name '$GIT_NAME'
     git config --global user.email '$GIT_EMAIL'
@@ -203,9 +204,10 @@ done
 success "git configured for root and reza"
 
 # ── Step 9: git-hooks (gitleaks pre-push) ────────────────────────────────────
-header "9. Installing git-hooks"
+header "9. Installing git-hooks (root + reza)"
 
 for TARGET_USER in root reza; do
+  info "Installing git-hooks for ${BOLD}$TARGET_USER${NC}..."
   USER_HOME=$(eval echo ~$TARGET_USER)
   HOOKS_DIR="$USER_HOME/git-hooks"
 
@@ -221,9 +223,10 @@ done
 success "git-hooks installed for root and reza"
 
 # ── Step 10: SSH keys ─────────────────────────────────────────────────────────
-header "10. Setting up SSH keys"
+header "10. Setting up SSH keys (root + reza)"
 
 for TARGET_USER in root reza; do
+  info "Generating SSH key for ${BOLD}$TARGET_USER${NC}..."
   USER_HOME=$(eval echo ~$TARGET_USER)
   KEY="$USER_HOME/.ssh/id_ed25519"
   mkdir -p "$USER_HOME/.ssh"
