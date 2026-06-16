@@ -1,7 +1,6 @@
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 plugins=(
   git
@@ -13,7 +12,10 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+if [[ -z "$_OMZ_LOADED" ]]; then
+  source $ZSH/oh-my-zsh.sh
+  export _OMZ_LOADED=1
+fi
 
 # PATH
 export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"
@@ -24,39 +26,27 @@ compdef k=kubectl 2>/dev/null
 alias k=kubectl
 export KUBECONFIG=~/.kube/config
 
-# ── Modern CLI tools ──────────────────────────────────────────────────────────
-
-# eza (better ls)
+# ── Modern CLI tools ─────────────────────────────────────────────────────────
 alias ls='eza --icons'
 alias la='eza --long --all --icons --git'
 alias ll='eza --long --icons --git'
 alias lt='eza --tree --icons --level=2'
 alias ltt='eza --tree --icons --level=3'
-
-# bat (better cat)
 alias cat='bat --paging=never'
-
-# tldr (better man pages)
 alias help='tldr'
-
-# btop (better top)
 alias top='btop'
-
-# fzf file preview
 alias fzp='fzf --preview "bat --color=always --style=numbers {}" --preview-window=right:60%'
 
-# zoxide (smarter cd)
+# zoxide
 eval "$(zoxide init zsh)"
-# alias cd='z'  # disabled — causes infinite loop with fzf hooks
+# alias cd='z' # disabled — causes infinite loop with fzf hooks
 
-# fzf shell integration (Ctrl+R history, Ctrl+T file, Alt+C dir)
+# fzf
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ]   && source /usr/share/doc/fzf/examples/completion.zsh
-
-# fzf default options
 export FZF_DEFAULT_OPTS='--height=50% --layout=reverse --border'
 export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=numbers {}" --preview-window=right:60%'
 export FZF_ALT_C_OPTS='--preview "eza --tree --icons --level=2 {}"'
 
 # ── oh-my-posh ───────────────────────────────────────────────────────────────
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/dracula-linux.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/k8s/zsh-profile/dracula-linux.omp.json)"
