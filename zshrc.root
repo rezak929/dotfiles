@@ -9,10 +9,7 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-if [[ -z "$_OMZ_LOADED" ]]; then
-  source $ZSH/oh-my-zsh.sh
-  export _OMZ_LOADED=1
-fi
+source $ZSH/oh-my-zsh.sh
 
 # PATH
 export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"
