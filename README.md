@@ -42,12 +42,15 @@ The script is interactive and will prompt for:
 
 ```
 dotfiles/
-├── setup.sh                      # New machine setup script
-├── zsh/
-│   ├── .zshrc.reza               # zshrc for reza user
-│   └── .zshrc.root               # zshrc for root user
-└── omp/
-    └── dracula-custom.omp.json   # Oh My Posh Dracula theme
+
+├── setup.sh                      # New machine setup script (Linux nodes)
+├── setup-mac.sh                  # New machine setup script (macOS)
+├── zshrc.reza                    # zshrc for reza user
+├── zshrc.root                    # zshrc for root user
+├── dracula-linux.omp.json        # Oh My Posh theme — Debian/Linux nodes
+├── dracula-mac.omp.json          # Oh My Posh theme — macOS
+├── dracula-windows.omp.json      # Oh My Posh theme — Windows PowerShell
+└── dracula-wsl.omp.json          # Oh My Posh theme — WSL
 ```
 
 ---
