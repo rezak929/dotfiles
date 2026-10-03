@@ -21,6 +21,18 @@ The script is interactive and will prompt for:
 
 ---
 
+### Arch / CachyOS desktop
+
+Run as your normal user (not root). Shell only, no user creation, sudoers, or SSH key distribution:
+
+```bash
+bash setup-arch.sh
+```
+
+Afterwards set the Konsole font to *MesloLGS Nerd Font*.
+
+---
+
 ## What setup.sh does
 
 | Step | Action |
@@ -45,6 +57,7 @@ dotfiles/
 
 ├── setup.sh                      # New machine setup script (Linux nodes)
 ├── setup-mac.sh                  # New machine setup script (macOS)
+├── setup-arch.sh                 # Shell setup for Arch/CachyOS desktops
 ├── zshrc.reza                    # zshrc for reza user
 ├── zshrc.root                    # zshrc for root user
 ├── dracula-linux.omp.json        # Oh My Posh theme — Debian/Linux nodes
